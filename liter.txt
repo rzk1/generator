@@ -1,0 +1,185 @@
+** Group by topic (so we can tell a story of how the method is developed).
+** No need to use authors first name in the label (To complicated)
+** When creating a label from the title, skip articles (a, an, the) if they come first in a title. Otherwise, the labels are harder to use. 
+** Avoid capital letters in the label.
+** Several key references are missing (added below)
+
+=========================
+
+---- THEORY OF STRUCTURE GENERATION ----
+
+!! book: Modern methods of crystal structure prediction. Chapter 1: Periodic-Graph Approaches in Crystal Structure Prediction
+
+-- oganov2006crystal
+J Chem Phys DOI: 10.1063/1.2210932
+Crystal structure prediction using ab initio evolutionary techniques: Principles and applications
+(not sure about these two artilcles related or not) -- ** different approach to crystal structure prediction, perhaps less useful for our purpose.
+
+** eon2010euclidian
+https://sci-hub.tw/https://doi.org/10.1107/S0108767310042832
+Eon formally demonstrated that one can obtain a unique representation of a net with deviations from its barycentric placement using a series of distortion vectors called colattice vectors.
+
+** wilmer2012large
+DOI: 10.1038/NCHEM.1192
+Large-scale screening of hypothetical metal–organic frameworks
+Parameter dependent, leads to similar topologies
+Algorithm is outlined
+
+martin2014construction
+Crystal Growth & Design DOI: 10.1021/cg500158c
+Construction and Characterization of Structure Models of Crystalline Porous Polymer.
+(1) assembly of crystalline porous polymer structure models which permits precise control over the underlying topologies of generated models like MOFs and COFs.
+(2) assembly the structure models: interpreting the net, aligning the buidling blocks, assembling the framework with net-based or connectino based, collision detection.
+(3) characterization: Zeo++ Voronoi decomposition to translate structural information [atom postions, unit cell shapes] into a periodic graph representation of the spaces between atoms and their connectivity. [a map of the material's void space]
+(4) net is to specific, can't acheive all possible structures.
+
+!! boyd2016generalized
+CrystEngComm DOI: 10.1039/c6ce00407e
+A generalized method for constructing hypothetical nanoporous materials of any net topology from graph theory
+Content:
+(1) Method for constructing hypothetical crystalline nanoporous materials[MOFs]: secondary building units with defined connection points + desired 3D net topolygy with labelled quotient graph.
+(2) algorithm provided: underlying net (from RCSR) + buidling units. 
+(3) code provided
+
+!! colon2017topologically
+Crystal Growth & Design DOI: 10.1021/acs.cgd.7b00848
+Topologically Guided, Automated Construction of Metal–Organic Frameworks and Their Evaluation for Energy-Related Applications
+(1) a computational algorithm and code to generate MOFs based on edge-transitive topological nets for subsequent evaluation via molecular simulation
+(2) input topological blueprints + building blocks
+(3) topological blueprints: information about unit cell parameters, positions of the net nodes and edges, coordination and symmetry of the nodes. [41 edge-transitive nets to construct 13512 MOFs]
+(4) building blocks - building blocks placement - connectivity information - running through library
+(5) Structure optimization - adsorption simulation with gas - other properties like surface area, void fractions, heats of adsorption.
+
+** create a full citation.
+Updated this algorithm in: DOI: 10.1039/C8CE01637B (Increasing topological diversity during computational “synthesis” of porous crystals: how and why)
+
+!! lan2017material
+NATURE COMMUNICATIONS DOI: 10.1038/s41467-018-07720-x
+Materials genomics methods for high-throughput construction of COFs and targeted synthesis
+Content:
+(1) high-throughput construction of COFs based on materials genomics strategy, a gene partition method of genetic structural units with reactive sites and quasi-reactive assembly algorithms (QReaxAA) for structure generation were proposed.
+(2) construction methods for 2D COFs with a self-adaption algorithm.
+(3) algorithm flowchart and library used provided.
+
+chen2020reticular
+Chem Rev DOI: 10.1021/acs.chemrev.9b00648 
+Reticular Chemistry 3.2: Typical Minimal Edge-Transitive Derived and Related Nets for the Design and Synthesis of Metal–Organic Frameworks  
+(1) Various nets, derived nets from parent nets and how to replace the nodes. These nets enrich the blueprints net for design syntheses of possible MOFs.
+
+
+** Do any articles below propose new computational/theoretical approaches?
+
+
+---- Decipher the structure from crystal database ----
+
+blatov2016method
+Struct Chem DOI: 10.1007/s11224-016-0774-1
+A method for topological analysis of rod packings
+** Unclear if this article is related. 
+(1) A method for analysis of geometrical and topological properties of crystal structure.
+(2) Seperation of chain-like building units - building underlying rod-containing net, rod net, and rod packing net - determining the rod net topology
+
+
+keeffe2012deconstructing
+Chem Rev DOI: 10.1021/cr200205j
+Deconstructing the Crystal Structures of Metal–Organic Frameworks and Related Materials into Their Underlying Nets
+(1) This review shows how to extract a net from crystal structure[including the definition of net]
+
+
+leong2010one
+Chem Rev DOI: 10.1021/cr100160e
+One-Dimensional Coordination Polymers: Complexity and Diversity in Structures, Properties, and Applications
+(1) cover literature from 1993 to 2009 about coordination polymers. Conclude the structure features of coordination polymers.
+
+
+---- APPLICATION ----
+
+mahynski2019using
+Nature Communications DOI: 10.1038/s41467-019-10031-4
+Using symmetry to elucidate the importance of stoichiometry in colloidal crystal assembly
+(1) demonstrate a method based on symmetry to predict the structure of self-assembling multicomponent colloidal mixtures.
+
+chen2019covalent
+Angewandte DOI: 10.1002/anie.201904291
+Covalent Organic Frameworks: Chemical Approaches to Designer Structures and Built‐In Functions
+(1) Design structures including principles, synthetic strategies and control methods. Built-in functions is scrutinized.
+(2) Design Principals: symmetric topology diagrams, asymmetric topology diagrams, 3D COFs, impact on skeleton and pore.
+(3) Designer structures: skeleton, pores, reactions, films and nanosheets, structural characterization.
+
+alexandrov2019topological
+Crystal Growth & Design DOI: 10.1021/acs.cgd.8b01721
+Topological Databases: Why Do We Need Them for Design of Coordination Polymers?
+(1)describe a set of databases that bear information on geometrical and topological properties of 1281254 metal coordination centers and 204828 ligands in 593879 crystal structures of coordination compounds from the Cambridge Structural Database.
+(2) topological descriptions - topological collections - correlations of descriptions - from description to knowledge Database
+
+
+addicoat2014autografs
+J Phys Chem A DOI: 10.1021/jp507643v
+AuToGraFS: Automatic Topological Generator for Framework Structures
+Content:
+(1) A new software AutoGraFS is presented, and show some of its advanced functionality in “computational reticular chemistry”. AuToGraFS is linked to a fully featured force field to produce fully optimized structures of arbitrary frameworks. AuToGraFS, including a GUI, is publicly available for download.
+(2) Topology information - scale topology [size of framework] - 'slots' creation - put building blocks - update bond and delete dummy atoms - Output
+(3) Include case study on popular MOF
+
+
+bureekaew2014isoreticular
+CrystEngComm DOI: 10.1039/c4ce01574f
+Isoreticular isomerism in 4,4-connected paddle-wheel metal–organic frameworks: structural prediction by the reverse topological approach
+Content:
+(1) developed a weaver program to automatically detect potential isoreticular isometism and to solve the global minimum problem via a genetic algorithm.
+(2) underlying algorithm will be introduced in another paper(but I found it did not published yet)
+(3) Calculation on the discrete molecular cages, and find the one with lower energy.
+
+
+**(reference) One Faraday discussion: methods and application of crystal structure prediction (no right to visit) 
+
+keupp2018topoff
+Faraday Discussions DOI: 10.1039/c8fd00051d
+TopoFF: MOF structure prediction using specifically optimized blueprints
+Content: 
+(1) For the structure prediction of MOFs and related crystalline framework materials they have proposed the Reversed Topological Approach (RTA), where the default embedding of a topology is used as a blueprint. The optimal rotational insertion of the building blocks (BBs) at the fixed vertex positions of the blueprint is performed by minimizing the target function of the average angle deviation (AAD). 
+(2) Here this idea is extended by pre-optimizing the maximum symmetry embedding of a topology in order to minimize the overall mean AAD for the given set of BBs. By this fast and essentially parameter-free topoFF method, the vertex positions and cell parameters of the blueprint are further optimized in order to fit the structural needs of the BBs, which speeds up the overall search for the most energetically favorable structure. 
+
+gomez-gualdron2016evaluating
+Energy & Environmental Science DOI: 10.1039/c6ee02104b
+Evaluating topologically diverse metal–organic frameworks for cryo-adsorbed hydrogen storage
+Content:
+(1) constructed 13512 potential MOF structures based on 41 different topologies and used molecular simulation to determine MOF hydrogen deliverable capacities.
+
+!! lan2017material (see above) COF generation
+
+!! springer2020topological
+Chem Soc Rev DOI: 10.1039/c9cs00893d
+Topological two-dimensional polymers
+Content:
+(1) 2D networks and their structural characterization: how to name, symmetry.
+(2) different network with electronic properties: connectivity, electronic topology and spin-orbit coupling, band structures and topological properties.
+(3) very brief review of how to create 2D polymer structures from 2D nets: RCSR database + Cx symmetry monomers + linkers [no detailed algorithm]
+ 
+
+
+
+---- CODES/RESOURCES ----
+
+I think here I collected almost all algorithm that we can use uptill now, there are four kinds of codes
+
+AuToGraFS: addicoat2014autografs
+
+TOBUNPOROUS: a code written to: (i) replace each Si centre with a Zn ion; (ii) replace the bridging oxygen of the Si–O–Si bridge by a linking ligand, here imidazole; and finally (iii) scale the unit-cell dimensions appropriately.
+
+TopoFF: keupp2018topoff
+
+lan2017material?
+
+http://epinet.anu.edu.au/  --- project explores 2D hyperbolic (H²) tilings as a source of crystalline frameworks (or networks) in 3D euclidean (E³) space. Our aim is to enumerate networks with a broad spectrum of properties that are of possible interest to geometers, structural chemists, and statistical physicists.
+
+https://topospro.com/software/
+
+
+
+
+
+
+
+
+
