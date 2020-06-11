@@ -38,7 +38,7 @@ CrystEngComm DOI: 10.1039/c6ce00407e
 A generalized method for constructing hypothetical nanoporous materials of any net topology from graph theory
 Content:
 (1) Method for constructing hypothetical crystalline nanoporous materials[MOFs]: secondary building units with defined connection points + desired 3D net topolygy with labelled quotient graph.
-(2) algorithm provided: underlying net (from RCSR) + buidling units. 
+(2) algorithm provided: underlying net (from RCSR) + buidling units (implementation section is useful). 
 (3) code provided
 
 !! colon2017topologically
@@ -157,8 +157,6 @@ Content:
 (3) very brief review of how to create 2D polymer structures from 2D nets: RCSR database + Cx symmetry monomers + linkers [no detailed algorithm]
  
 
-
-
 ---- CODES/RESOURCES ----
 
 I think here I collected almost all algorithm that we can use uptill now, there are four kinds of codes
@@ -171,15 +169,10 @@ TopoFF: keupp2018topoff
 
 lan2017material?
 
+ToBaCCo code
+Zeo++ software
+QReaxAA
+
 http://epinet.anu.edu.au/  --- project explores 2D hyperbolic (H²) tilings as a source of crystalline frameworks (or networks) in 3D euclidean (E³) space. Our aim is to enumerate networks with a broad spectrum of properties that are of possible interest to geometers, structural chemists, and statistical physicists.
 
 https://topospro.com/software/
-
-
-
-
-
-
-
-
-
