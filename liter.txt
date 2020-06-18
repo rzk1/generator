@@ -6,13 +6,27 @@
 
 =========================
 
+Idea:
+Build a 2D conjugated polymer generator
+
+Steps:
+1. periodic graph or net database
+  (1). RCSR 10.1021/ar800124u(usage introduction)
+  (2). EPINET 
+2. replace vertice with secondary building blocks(code for creating MOFs and COFs);
+3. functional properties simulations;
+4. Applications
+
 ---- THEORY OF STRUCTURE GENERATION ----
 
 !! book: Modern methods of crystal structure prediction. Chapter 1: Periodic-Graph Approaches in Crystal Structure Prediction
+(Chapter 7: Crystal Structure Prediction Using Evolutionary Approach)
 
 -- oganov2006crystal
 J Chem Phys DOI: 10.1063/1.2210932
 Crystal structure prediction using ab initio evolutionary techniques: Principles and applications
+(Application: predict the most stable crystal structure and a number of low-energy metastable structures for a given compound at any P-T conditions)
+Code is provided in a website, algorithm is introduced)
 (not sure about these two artilcles related or not) -- ** different approach to crystal structure prediction, perhaps less useful for our purpose.
 
 ** eon2010euclidian
@@ -23,6 +37,7 @@ Eon formally demonstrated that one can obtain a unique representation of a net w
 DOI: 10.1038/NCHEM.1192
 Large-scale screening of hypothetical metal–organic frameworks
 Parameter dependent, leads to similar topologies
+Generating hypothetical MOFs by recombining building blocks from already synthesized MOFs. (A updation method of already experimetally existing MOFs)
 Algorithm is outlined
 
 martin2014construction
@@ -32,34 +47,38 @@ Construction and Characterization of Structure Models of Crystalline Porous Poly
 (2) assembly the structure models: interpreting the net, aligning the buidling blocks, assembling the framework with net-based or connectino based, collision detection.
 (3) characterization: Zeo++ Voronoi decomposition to translate structural information [atom postions, unit cell shapes] into a periodic graph representation of the spaces between atoms and their connectivity. [a map of the material's void space]
 (4) net is to specific, can't acheive all possible structures.
+The method is provided by Zeo++ software.
 
 !! boyd2016generalized
 CrystEngComm DOI: 10.1039/c6ce00407e
 A generalized method for constructing hypothetical nanoporous materials of any net topology from graph theory
 Content:
 (1) Method for constructing hypothetical crystalline nanoporous materials[MOFs]: secondary building units with defined connection points + desired 3D net topolygy with labelled quotient graph.
-(2) algorithm provided: underlying net (from RCSR) + buidling units (implementation section is useful). 
+(2) algorithm provided: underlying net (from RCSR) + buidling units. 
 (3) code provided
 
 !! colon2017topologically
 Crystal Growth & Design DOI: 10.1021/acs.cgd.7b00848
 Topologically Guided, Automated Construction of Metal–Organic Frameworks and Their Evaluation for Energy-Related Applications
-(1) a computational algorithm and code to generate MOFs based on edge-transitive topological nets for subsequent evaluation via molecular simulation
+(1) a computational algorithm and code to generate MOFs based on edge-transitive topological nets for subsequent evaluation via molecular simulation[ToBaCCo 1.0]
 (2) input topological blueprints + building blocks
 (3) topological blueprints: information about unit cell parameters, positions of the net nodes and edges, coordination and symmetry of the nodes. [41 edge-transitive nets to construct 13512 MOFs]
 (4) building blocks - building blocks placement - connectivity information - running through library
 (5) Structure optimization - adsorption simulation with gas - other properties like surface area, void fractions, heats of adsorption.
 
-** create a full citation.
-Updated this algorithm in: DOI: 10.1039/C8CE01637B (Increasing topological diversity during computational “synthesis” of porous crystals: how and why)
+!! Anderson2019Increasing
+Crystal Growth & Design DOI: 10.1039/C8CE01637B
+Increasing topological diversity during computational “synthesis” of porous crystals: how and why
+Updated the ToBaCCO code to version 3.0
 
 !! lan2017material
 NATURE COMMUNICATIONS DOI: 10.1038/s41467-018-07720-x
 Materials genomics methods for high-throughput construction of COFs and targeted synthesis
 Content:
-(1) high-throughput construction of COFs based on materials genomics strategy, a gene partition method of genetic structural units with reactive sites and quasi-reactive assembly algorithms (QReaxAA) for structure generation were proposed.
+(1) high-throughput construction of COFs based on materials genomics strategy, a gene partition method of genetic structural units with reactive sites and quasi-reactive assembly algorithms (QReaxAA) highthroughput construction were proposed.
 (2) construction methods for 2D COFs with a self-adaption algorithm.
 (3) algorithm flowchart and library used provided.
+Use Zeo++ to generate MOF structures.
 
 chen2020reticular
 Chem Rev DOI: 10.1021/acs.chemrev.9b00648 
@@ -157,7 +176,9 @@ Content:
 (3) very brief review of how to create 2D polymer structures from 2D nets: RCSR database + Cx symmetry monomers + linkers [no detailed algorithm]
  
 
----- CODES/RESOURCES ----
+
+
+---- CODE ----
 
 I think here I collected almost all algorithm that we can use uptill now, there are four kinds of codes
 
@@ -167,12 +188,69 @@ TOBUNPOROUS: a code written to: (i) replace each Si centre with a Zn ion; (ii) r
 
 TopoFF: keupp2018topoff
 
-lan2017material?
-
 ToBaCCo code
 Zeo++ software
 QReaxAA
 
-http://epinet.anu.edu.au/  --- project explores 2D hyperbolic (H²) tilings as a source of crystalline frameworks (or networks) in 3D euclidean (E³) space. Our aim is to enumerate networks with a broad spectrum of properties that are of possible interest to geometers, structural chemists, and statistical physicists.
+Application by the code:
+-- ToBaCCo code:
+1. 13512 MOFs + hydrogen storage, methane storage, Xe/Kr separation(DOI: 10.1021/acs.cgd.7b00848)
+2. simulated adsorption, mechanical properties(DOI: 10.1039/C8CE01637B)
+3. 18000+ MOFs + hydrogen storage capabilities with neural network(DOI: 10.1021/acs.jpcc.8b09420)
+4. 50000 experimental MOFs + hydrogen deliverable capacity(DOI: 10.1039/c8me00050f)
+5. electrostatic interactions(DOI: 10.1021/acs.jctc.7b00841)
+6. design smart MOFs for methane storage(DOI: 10.1039/c9me00072k)
+7. predicting adsorption isotherms(DOI: 10.1021/acs.jctc.9b00940)
 
-https://topospro.com/software/
+-- Zeo++ software:
+1. MOFs structrue and applications
+2. Voronoi tessellation on crystalline porous material like zeolite(DOI: 10.1039/c3ce41057a)
+3. charaterize Geometric pore volume and Probe center pore volume(DOI: 10.1021/acs.langmuir.7b01682)
+4. describe the detailed porosity of a periodic system(DOI: 10.1021/acs.chemmater.6b02994)
+
+-- topoFF
+1. MOFs structure predictions 
+
+
+
+
+A realated book
+Modern Methods of Crystal Structure Prediction
+1. Periodic-Graph Approaches in Crystal Structure Prediction
+2. Energy Landscapes and Structure Prediction Using Basin-Hopping
+3. Random Search Methods
+4. Predicting Solid Compounds Using Simulated Annealing
+5. Simulation of Structural Phase Transitions in Crystals: The Metadynamics Approach6. Global Optimization with the Minima Hopping Method
+7. Crystal Structure Prediction Using Evolutionary Approach
+
+Application 
+1. Design MOFs and taxonomy of them(DOI: 10.1021/ar020022l)
+2. Embedding(DOI: 10.1016/j.jssc.2005.06.037)
+3. wave propagation in thin structure(DOI: 10.1088/0959-7174/12/4/201)
+4. High-symmetry embeddings of interpenetrating periodic nets(DOI: 10.1107/S2053273314019950)
+5. two-dimensional arrays for free-radical benzenoid hydrocarbons(DOI: 10.1021/ci000005f)
+6.design microstructures of two-phase composites with extremal electromagnetic permeability and permittivity(DOI: 10.1007/s00158-012-0766-8)
+7. topological optimization
+
+In discussion:
+whether the code can:
+1. produce fused ring when inserting secondary building blocks
+2. create heterogeneous ring
+
+direction:
+1. hyperbolic space materials
+(1) http://epinet.anu.edu.au 2D hyperbolic (H²) tilings(also a net database)
+(2) enumeration of hyperbolic tilings to create nets(DOI: 10.1016/j.solidstatesciences.2006.04.001)
+
+
+2. quasicrystal
+(1) clean surface of quasicrystal? 
+(2) 2D quasiperiodic tiling with 8-fold symmetry using cold atoms(DOI: 10.3390/cryst6100124)
+(3) Pseudo-disordered supercells result in different performance of solar cells.(DOI: 10.1364/OE.24.00A650)
+(4) New group theoretical methods for applications in virology and quasicrystals
+
+3. 2D but not planar material like MoS2
+4. defects in graphite
+
+
+
