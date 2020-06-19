@@ -176,3 +176,10 @@ QReaxAA
 http://epinet.anu.edu.au/  --- project explores 2D hyperbolic (H²) tilings as a source of crystalline frameworks (or networks) in 3D euclidean (E³) space. Our aim is to enumerate networks with a broad spectrum of properties that are of possible interest to geometers, structural chemists, and statistical physicists.
 
 https://topospro.com/software/
+
+
+Quasicrystals LETTER
+doi:10.1038/nature12514
+Quasicrystalline structure formation in a classical
+crystalline thin-film system
+
